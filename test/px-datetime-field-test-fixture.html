@@ -20,112 +20,178 @@ limitations under the License.
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Web Component Test : Fixture for px-datetime-input</title>
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
-    <script src="../../iron-test-helpers/mock-interactions.js"></script>
-    <link rel="import" href="../px-datetime-field.html" />
-    <link rel="import" href="../../px-theme/px-theme-styles.html">
-    <script src="px-datetime-field-custom-tests.js"></script>
+    <script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../../wct-browser-legacy/browser.js"></script>
+    <script src="../../@polymer/iron-test-helpers/mock-interactions.js" type="module"></script>
+    <script type="module" src="../px-datetime-field.js"></script>
+    <script type="module" src="../../px-theme/px-theme-styles.js"></script>
+    <script src="./px-datetime-field-custom-tests.js"></script>
   </head>
 
   <body>
-    <custom-style>
-      <style include="px-theme-styles" is="custom-style"></style>
-    </custom-style>
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('template');
 
-    <test-fixture id="px_datetime_field">
+$_documentContainer.innerHTML = `<custom-style>
+      <style include="px-theme-styles" is="custom-style"></style>
+    </custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<test-fixture id="px_datetime_field">
       <template>
         <px-datetime-field></px-datetime-field>
       </template>
-    </test-fixture>
-    <test-fixture id="px_datetime_field required">
-      <template>
-        <px-datetime-field
-          required>
-        </px-datetime-field>
-      </template>
-    </test-fixture>
-    <test-fixture id="px_datetime_field required buttons">
-      <template>
-        <px-datetime-field
-          required
-          show-buttons>
-        </px-datetime-field>
-      </template>
-    </test-fixture>
-    <test-fixture id="px_datetime_field buttons">
-      <template>
-        <px-datetime-field
-          show-buttons>
-        </px-datetime-field>
-      </template>
-    </test-fixture>
+    </test-fixture>`;
 
-    <test-fixture id="px_datetime_field hideDate">
-      <template>
-        <px-datetime-field
-          hide-date>
-        </px-datetime-field>
-      </template>
-    </test-fixture>
-    <test-fixture id="px_datetime_field hideDate required">
-      <template>
-        <px-datetime-field
-          hide-date
-          required>
-        </px-datetime-field>
-      </template>
-    </test-fixture>
-    <test-fixture id="px_datetime_field hideDate required buttons">
-      <template>
-        <px-datetime-field
-          required
-          hide-date
-          show-buttons>
-        </px-datetime-field>
-      </template>
-    </test-fixture>
-    <test-fixture id="px_datetime_field hideDate buttons">
-      <template>
-        <px-datetime-field
-          hide-date
-          show-buttons>
-        </px-datetime-field>
-      </template>
-    </test-fixture>
+document.body.appendChild($_documentContainer.content);
+</script>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
 
-    <test-fixture id="px_datetime_field hideTime">
+$_documentContainer.innerHTML = `<test-fixture id="px_datetime_field required">
       <template>
-        <px-datetime-field
-          hide-time>
+        <px-datetime-field required="">
         </px-datetime-field>
       </template>
-    </test-fixture>
-    <test-fixture id="px_datetime_field hideTime required">
+    </test-fixture>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<test-fixture id="px_datetime_field required buttons">
       <template>
-        <px-datetime-field
-          hide-time
-          required>
+        <px-datetime-field required="" show-buttons="">
         </px-datetime-field>
       </template>
-    </test-fixture>
-    <test-fixture id="px_datetime_field hideTime required buttons">
+    </test-fixture>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<test-fixture id="px_datetime_field buttons">
       <template>
-        <px-datetime-field
-          required
-          hide-time
-          show-buttons>
+        <px-datetime-field show-buttons="">
         </px-datetime-field>
       </template>
-    </test-fixture>
-    <test-fixture id="px_datetime_field hideTime buttons">
+    </test-fixture>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<test-fixture id="px_datetime_field hideDate">
       <template>
-        <px-datetime-field
-          hide-time
-          show-buttons>
+        <px-datetime-field hide-date="">
         </px-datetime-field>
       </template>
-    </test-fixture>
+    </test-fixture>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<test-fixture id="px_datetime_field hideDate required">
+      <template>
+        <px-datetime-field hide-date="" required="">
+        </px-datetime-field>
+      </template>
+    </test-fixture>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<test-fixture id="px_datetime_field hideDate required buttons">
+      <template>
+        <px-datetime-field required="" hide-date="" show-buttons="">
+        </px-datetime-field>
+      </template>
+    </test-fixture>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<test-fixture id="px_datetime_field hideDate buttons">
+      <template>
+        <px-datetime-field hide-date="" show-buttons="">
+        </px-datetime-field>
+      </template>
+    </test-fixture>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<test-fixture id="px_datetime_field hideTime">
+      <template>
+        <px-datetime-field hide-time="">
+        </px-datetime-field>
+      </template>
+    </test-fixture>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<test-fixture id="px_datetime_field hideTime required">
+      <template>
+        <px-datetime-field hide-time="" required="">
+        </px-datetime-field>
+      </template>
+    </test-fixture>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<test-fixture id="px_datetime_field hideTime required buttons">
+      <template>
+        <px-datetime-field required="" hide-time="" show-buttons="">
+        </px-datetime-field>
+      </template>
+    </test-fixture>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<test-fixture id="px_datetime_field hideTime buttons">
+      <template>
+        <px-datetime-field hide-time="" show-buttons="">
+        </px-datetime-field>
+      </template>
+    </test-fixture>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 
   </body>
 </html>

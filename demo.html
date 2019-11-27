@@ -23,20 +23,36 @@ limitations under the License.
     <!-- Requires Webcomponents.js polyfill is provided by the page for browsers that don't support html imports -->
     <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
     <!-- Import custom element. Note: see comment about relative paths to dependencies in the *.html file referenced below -->
-    <link rel="import" href="px-datetime-field.html"/>
-    <link rel="import" href="../px-theme/px-theme-styles.html">
-    <style include="px-theme-styles" is="custom-style"></style>
+    <script type="module" src="./px-datetime-field.js"></script>
+    <script type="module" src="../px-theme/px-theme-styles.js"></script>
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<style include="px-theme-styles" is="custom-style"></style>`;
+document.head.appendChild($_documentContainer.content);
+</script>
 
   </head>
   <body>
-    <h2>px-datetime-field Demo</h2>
-      <px-datetime-field
-        date-time="2016-01-01T01:00:00.000Z"
-        date-format="YYYY/MM/DD"
-        time-format="HH:mm"
-        show-buttons="true"
-        show-time-zone="text"
-        time-zone="UTC">
-      </px-datetime-field>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<h2>px-datetime-field Demo</h2>`;
+document.body.appendChild($_documentContainer.content);
+</script>
+      <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<px-datetime-field date-time="2016-01-01T01:00:00.000Z" date-format="YYYY/MM/DD" time-format="HH:mm" show-buttons="true" show-time-zone="text" time-zone="UTC">
+      </px-datetime-field>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
   </body>
 </html>
